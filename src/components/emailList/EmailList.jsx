@@ -20,34 +20,36 @@ export default function EmailList({
     if (filter === "read") {
       const readData = emailList?.filter((item) => item?.isRead);
       setFilterEmailList(readData);
-      // localStorage.setItem("emailList", JSON.stringify(readData));
     } else if (filter === "unread") {
       const unreadData = emailList?.filter((item) => !item?.isRead);
       setFilterEmailList(unreadData);
-      // localStorage.setItem("emailList", JSON.stringify(unreadData));
     } else if (filter === "favorite") {
       const favoriteData = emailList?.filter((item) => item?.isFavorite);
       setFilterEmailList(favoriteData);
-      // localStorage.setItem("emailList", JSON.stringify(favoriteData));
     } else if (filter === "All") {
       setFilterEmailList(emailList);
-      //   localStorage.setItem("emailList", JSON.stringify(emailList));
     }
   }, [filter, emailList]);
+
+  const cachedList = JSON.parse(localStorage.getItem(`emailList`));
 
   const getEmailList = useCallback(
     async (pageNum) => {
       setIsLoading(true);
       try {
-        const { data } = await getEmailListApi(pageNum);
-        const uiData = data?.list?.map((each) => ({
-          ...each,
-          date: new Date(each?.date),
-          isRead: false,
-          isFavorite: false,
-        }));
-        setEmailList(uiData);
-        // localStorage.setItem("emailList", JSON.stringify(uiData));
+        if (!cachedList?.length) {
+          const { data } = await getEmailListApi(pageNum);
+          const uiData = data?.list?.map((each) => ({
+            ...each,
+            date: new Date(each?.date),
+            isRead: false,
+            isFavorite: false,
+          }));
+          setEmailList(uiData);
+          localStorage.setItem(`emailList`, JSON.stringify(uiData));
+        } else {
+          setEmailList(cachedList);
+        }
       } catch (error) {
         console.error("There is something wrong with network call", error);
       } finally {

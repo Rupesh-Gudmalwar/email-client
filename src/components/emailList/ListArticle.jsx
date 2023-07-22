@@ -31,8 +31,8 @@ const ListArticle = React.memo(
           </p>
           <p className='date-fav'>
             <span className='date'>
-              {data?.date && formatDate(data?.date)}{" "}
-              {data?.date && timeFormat(data?.date)}
+              {data?.date ? formatDate(data?.date) : ""}{" "}
+              {data?.date ? timeFormat(data?.date) : ""}
             </span>
 
             {data?.isFavorite && <span className='fav-tag ml-4'>Favorite</span>}

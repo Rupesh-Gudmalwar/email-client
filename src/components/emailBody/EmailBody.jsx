@@ -22,6 +22,7 @@ export default function EmailBody({
             each?.id === id ? { ...each, isRead: true } : { ...each }
           );
           setEmailList(readData);
+          localStorage.setItem("emailList", JSON.stringify(readData));
         }
       } catch (error) {
         console.error("Error in fetching email body", error);
@@ -41,6 +42,7 @@ export default function EmailBody({
       each?.id === id ? { ...each, isFavorite: true } : { ...each }
     );
     setEmailList(favData);
+    localStorage.setItem(`emailList`, JSON.stringify(favData));
   }
 
   return (

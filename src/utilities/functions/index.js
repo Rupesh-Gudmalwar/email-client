@@ -1,7 +1,8 @@
 export const formatDate = (dateObj) => {
-  const date = dateObj?.getDate();
-  let month = dateObj?.getMonth() + 1;
-  const year = dateObj?.getFullYear();
+  const newDate = new Date(dateObj);
+  const date = newDate?.getDate();
+  let month = newDate?.getMonth() + 1;
+  const year = newDate?.getFullYear();
 
   month = month < 10 ? "0" + month : month;
 
@@ -10,8 +11,9 @@ export const formatDate = (dateObj) => {
 };
 
 export const timeFormat = (dateObj) => {
-  let hours = dateObj?.getHours();
-  let minutes = dateObj?.getMinutes();
+  const newDate = new Date(dateObj);
+  let hours = newDate?.getHours();
+  let minutes = newDate?.getMinutes();
 
   hours = hours % 12;
   hours = hours ? hours : 12;
