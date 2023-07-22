@@ -1,0 +1,68 @@
+@import "../../utilities/styles/variables.scss";
+
+.list-article {
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid $border-color;
+  background-color: $white;
+  border-radius: 6px;
+
+  .from,
+  .subject {
+    display: flex;
+    gap: 6px;
+  }
+  .from > .name,
+  .from > .email,
+  .subject > .content {
+    font-weight: 500;
+  }
+  .date-fav {
+    .date {
+      font-size: 14px;
+      // font-weight: 300;
+    }
+    .fav-tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: $accent-color;
+    }
+  }
+  .short-desc {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0.5rem 0;
+  }
+
+  .text-truncate{
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &.current-email {
+    border: 1px solid $accent-color;
+  }
+  &.read-email {
+    background-color: $filter-color;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  button {
+    font-size: 20px;
+    font-weight: 800;
+    border: 1px solid $border-color;
+    background-color: $white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

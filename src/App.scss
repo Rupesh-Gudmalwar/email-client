@@ -1,0 +1,70 @@
+@import "./utilities/styles/variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem;
+  background-color: $bg-color;
+  color: $text-color;
+  max-width: 1440px;
+  margin: auto;
+}
+
+main {
+  display: flex;
+  gap: 24px;
+
+  .list-container {
+    width: 100%;
+  }
+  .list-container-half {
+    width: 40%;
+  }
+  .body-container {
+    width: 60%;
+    height: 80vh;
+    border: 1px solid $border-color;
+    background-color: $white;
+    padding: 2rem;
+    border-radius: 6px;
+    overflow-y: auto;
+  }
+}
+
+.filter {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 1rem;
+  span {
+    cursor: pointer;
+    font-weight: 500;
+    &.active-filter {
+      padding: 4px 8px;
+      background-color: $filter-color;
+      border: 1px solid $border-color;
+      border-radius: 100vw;
+      font-size: 12px;
+    }
+  }
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #cfd2dc;
+  background-color: #e54065;
+  color: #fff;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  min-height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: capitalize;
+}

@@ -1,0 +1,91 @@
+@import "./variables.scss";
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+//padding, margins as utility classes for faster development
+
+@for $i from 0 through 100 {
+  //margin
+  .m-#{$i} {
+    margin: 1rem * $i/4 !important;
+  }
+  .mt-#{$i} {
+    margin-top: 1rem * $i/4 !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: 1rem * $i/4 !important;
+  }
+  .ml-#{$i} {
+    margin-left: 1rem * $i/4 !important;
+  }
+  .mr-#{$i} {
+    margin-right: 1rem * $i/4 !important;
+  }
+  .mx-#{$i} {
+    margin-right: 1rem * $i/4 !important;
+    margin-left: 1rem * $i/4 !important;
+  }
+  .my-#{$i} {
+    margin-top: 1rem * $i/4 !important;
+    margin-bottom: 1rem * $i/4 !important;
+  }
+
+  //padding
+  .p-#{$i} {
+    padding: 1rem * $i/4 !important;
+  }
+  .pt-#{$i} {
+    padding-top: 1rem * $i/4 !important;
+  }
+  .pb-#{$i} {
+    padding-bottom: 1rem * $i/4 !important;
+  }
+  .pl-#{$i} {
+    padding-left: 1rem * $i/4 !important;
+  }
+  .pr-#{$i} {
+    padding-right: 1rem * $i/4 !important;
+  }
+  .px-#{$i} {
+    padding-right: 1rem * $i/4 !important;
+    padding-left: 1rem * $i/4 !important;
+  }
+  .py-#{$i} {
+    padding-top: 1rem * $i/4 !important;
+    padding-bottom: 1rem * $i/4 !important;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

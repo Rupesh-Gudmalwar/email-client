@@ -1,24 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+//styles imports
+import "./utilities/styles/stylesheet.scss";
+import "./App.scss";
+
+import EmailBody from "./components/emailBody/EmailBody";
+import EmailList from "./components/emailList/EmailList";
+import { useState } from "react";
 
 function App() {
+  const [emailList, setEmailList] = useState([]);
+  const [openEmail, setOpenEmail] = useState(null);
+  const [filter, setFilter] = useState("All");
+
+  function handleFilter(key) {
+    setFilter(key);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <h1 className='mb-4'>Super Email</h1>
+
+      <section className='filter'>
+        Filter By:
+        <span
+          className={filter === "unread" ? "active-filter" : ""}
+          onClick={() => handleFilter("unread")}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Unread
+        </span>
+        <span
+          className={filter === "read" ? "active-filter" : ""}
+          onClick={() => handleFilter("read")}
+        >
+          Read
+        </span>
+        <span
+          className={filter === "favorite" ? "active-filter" : ""}
+          onClick={() => handleFilter("favorite")}
+        >
+          Favorites
+        </span>
+        {/* Added "all" filter considering ideal case although this was not in requirements */}
+        <span
+          className={filter === "All" ? "active-filter" : ""}
+          onClick={() => handleFilter("All")}
+        >
+          All
+        </span>
+      </section>
+
+      <main>
+        <EmailList
+          emailList={emailList}
+          setEmailList={setEmailList}
+          openEmail={openEmail}
+          setOpenEmail={setOpenEmail}
+          filter={filter}
+        />
+
+        {Boolean(openEmail) && (
+          <EmailBody
+            emailList={emailList}
+            setEmailList={setEmailList}
+            openEmail={openEmail}
+            setOpenEmail={setOpenEmail}
+          />
+        )}
+      </main>
+    </>
   );
 }
 

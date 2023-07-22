@@ -1,0 +1,26 @@
+@import "../../utilities/styles/variables.scss";
+
+.email-body-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  .avatar {
+    min-width: 50px;
+  }
+
+  .email-body {
+    max-width: 100%;
+    // font-size: 14px;
+    font-weight: 300;
+    white-space: wrap;
+  }
+  .mark-favorite {
+    padding: 8px 12px;
+    background-color: $accent-color;
+    border-radius: 100vw;
+    color: $white;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}
